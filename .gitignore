@@ -1,0 +1,7 @@
+node_modules/
+output/*.pdf
+output/*.docx
+output/*.html
+resume-export.md
+master-resume.md
+.env
