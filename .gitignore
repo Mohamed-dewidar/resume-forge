@@ -5,3 +5,4 @@ output/*.html
 resume-export.md
 master-resume.md
 .env
+tailored/*.md

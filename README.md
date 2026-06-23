@@ -97,37 +97,48 @@ Open `output/resume-preview.html` in a browser to check layout before submitting
 
 ## Scripts
 
-| Command                     | Description                                   |
-| --------------------------- | --------------------------------------------- |
-| `pnpm install`              | Install dependencies and Chrome for Puppeteer |
-| `pnpm run setup:chrome`     | Re-install Puppeteer's Chrome if missing      |
-| `pnpm run build`            | Generate PDF and HTML from `resume-export.md` |
-| `pnpm run build:pdf`        | Generate PDF only                             |
-| `pnpm run build:html`       | Generate HTML preview only                    |
-| `pnpm run build:pdf:custom` | Alias for custom input (see below)            |
+| Command                 | Description                                        |
+| ----------------------- | -------------------------------------------------- |
+| `pnpm install`          | Install dependencies and Chrome for Puppeteer      |
+| `pnpm run setup:chrome` | Re-install Puppeteer's Chrome if missing           |
+| `pnpm run build`        | Generate PDF and HTML from `resume-export.md`      |
+| `pnpm run build:pdf`    | Generate PDF only (accepts optional args)          |
+| `pnpm run build:html`   | Generate HTML preview only (accepts optional args) |
 
-### Custom input and output
+Pass arguments to `build:pdf` and `build:html` after `--` (pnpm forwards them to the script).
 
-Both build scripts accept optional CLI arguments:
+### `build:pdf` examples
+
+| Scenario                    | Command                                                                                    | Output                                     |
+| --------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| Default export              | `pnpm run build:pdf`                                                                       | `output/{RESUME_FILE_SLUG}_Resume.pdf`     |
+| Tailored resume             | `pnpm run build:pdf -- tailored/acme-senior-frontend.md`                                   | `output/acme-senior-frontend.pdf`          |
+| Custom PDF filename         | `pnpm run build:pdf -- resume-export.md Mohamed_Dewidar_Acme.pdf`                          | `output/Mohamed_Dewidar_Acme.pdf`          |
+| Tailored file + custom name | `pnpm run build:pdf -- tailored/acme-senior-frontend.md Mohamed_Dewidar_Acme_Frontend.pdf` | `output/Mohamed_Dewidar_Acme_Frontend.pdf` |
+
+Equivalent direct calls (same behavior):
 
 ```bash
-# Build PDF from a tailored version
+node scripts/build-pdf.js
 node scripts/build-pdf.js tailored/acme-senior-frontend.md
-
-# Custom output filename
 node scripts/build-pdf.js resume-export.md Custom_Output.pdf
-
-# HTML from tailored file
-node scripts/build-html.js tailored/acme-senior-frontend.md acme-preview.html
 ```
 
-**Naming rules:**
+### `build:html` examples
 
-| Input              | Default PDF output              | Default HTML output    |
-| ------------------ | ------------------------------- | ---------------------- |
-| `resume-export.md` | `{RESUME_FILE_SLUG}_Resume.pdf` | `resume-preview.html`  |
-| Any other `.md`    | `{basename}.pdf`                | `{basename}.html`      |
-| CLI arg 3          | Overrides default name          | Overrides default name |
+| Scenario                | Command                                                                     | Output                             |
+| ----------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
+| Default preview         | `pnpm run build:html`                                                       | `output/resume-preview.html`       |
+| Tailored resume         | `pnpm run build:html -- tailored/acme-senior-frontend.md`                   | `output/acme-senior-frontend.html` |
+| Custom preview filename | `pnpm run build:html -- tailored/acme-senior-frontend.md acme-preview.html` | `output/acme-preview.html`         |
+
+### Naming rules
+
+| Input              | Default PDF output              | Default HTML output         |
+| ------------------ | ------------------------------- | --------------------------- |
+| `resume-export.md` | `{RESUME_FILE_SLUG}_Resume.pdf` | `resume-preview.html`       |
+| Any other `.md`    | `{basename}.pdf`                | `{basename}.html`           |
+| 2nd CLI arg        | Overrides default PDF name      | Overrides default HTML name |
 
 ## Project structure
 

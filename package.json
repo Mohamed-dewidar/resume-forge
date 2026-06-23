@@ -8,8 +8,7 @@
     "postinstall": "puppeteer browsers install chrome",
     "build:pdf": "node scripts/build-pdf.js",
     "build:html": "node scripts/build-html.js",
-    "build": "node scripts/build-pdf.js && node scripts/build-html.js",
-    "build:pdf:custom": "node scripts/build-pdf.js"
+    "build": "node scripts/build-pdf.js && node scripts/build-html.js"
   },
   "devDependencies": {
     "dotenv": "^17.4.2",
