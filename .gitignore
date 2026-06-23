@@ -1,8 +1,6 @@
 node_modules/
-output/*.pdf
-output/*.docx
-output/*.html
+output/
 resume-export.md
 master-resume.md
 .env
-tailored/*.md
+tailored/
