@@ -80,6 +80,12 @@ Your summary here…
 
 The build scripts support inline HTML for headers and structured entries, plus standard Markdown for sections and bullets.
 
+See **`templates/resume-structure-template.md`** for a full section-by-section reference with dummy data and HTML class comments. Preview it with:
+
+```bash
+pnpm run build:pdf templates/resume-structure-template.md
+```
+
 ### 4. Build
 
 ```bash
@@ -147,11 +153,12 @@ node scripts/build-pdf.js resume-export.md Custom_Output.pdf
 ├── .cursor/skills/          # Cursor agent skills (see Credits)
 ├── .env.example             # Template for local .env (committed)
 ├── .gitignore               # Keeps personal data out of git
-├── master-resume.md         # Your full resume (gitignored — create locally)
+├── master-resume.md         # Your whole experience (gitignored — create locally)
 ├── resume-export.md         # Export-ready resume (gitignored — create locally)
 ├── tailored/                # Job-specific resume variants
 ├── templates/
-│   └── resume.css           # ATS-friendly print stylesheet
+│   ├── resume.css                    # ATS-friendly print stylesheet
+│   └── resume-structure-template.md  # Section structure reference (dummy data)
 ├── scripts/
 │   ├── build-pdf.js         # Markdown → PDF
 │   └── build-html.js        # Markdown → HTML preview
@@ -166,9 +173,7 @@ Personal files are excluded from version control:
 
 ```
 node_modules/
-output/*.pdf
-output/*.docx
-output/*.html
+output/
 resume-export.md
 master-resume.md
 .env
