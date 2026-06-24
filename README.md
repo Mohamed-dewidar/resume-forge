@@ -24,7 +24,12 @@ Write your resume once, iterate in your editor, export submission-ready PDFs, an
 ### 1. Clone and install
 
 ```bash
-git clone <your-repo-url>
+## using ssh
+git clone git@github.com:Mohamed-dewidar/resume-forge.git
+## OR
+## Using Https
+git clone https://github.com/Mohamed-dewidar/resume-forge.git
+
 cd resume-forge   # or your local folder name
 pnpm install
 ```
